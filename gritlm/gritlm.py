@@ -125,7 +125,6 @@ class GritLM(torch.nn.Module):
                 max_length=max_length,
                 add_special_tokens=add_special_tokens,
             ).to(self.device)
-
             if (self.attn is not None) and (self.attn[:2] == 'bb'):
                 inputs["is_causal"] = False
             if get_cache:
@@ -166,7 +165,7 @@ class GritLM(torch.nn.Module):
         all_embeddings = (
             torch.cat(all_embeddings, dim=0) if convert_to_tensor else np.concatenate(all_embeddings, axis=0)
         )
-        if input_was_string:
+        if input_was_string: 
             all_embeddings = all_embeddings[0]
         if get_cache:
             # all_kv_caches = (
